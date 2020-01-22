@@ -40,3 +40,19 @@ jobs:
           target_registry_username: github
           target_registry_password: ${{ secrets.GITHUB_TOKEN }}
           target_registry_endpoint: https://docker.pkg.github.com/v2/
+
+      - name: Publish release to docker.io
+        uses: flownative/action-docker-publish-semver@master
+        with:
+          tag_ref: ${{ steps.latest_version.outputs.tag }}
+          tag_latest: 'yes'
+
+          source_image_name: docker.pkg.github.com/flownative/docker-action-docker-build/action-docker-build
+          source_registry_username: github
+          source_registry_password: ${{ secrets.GITHUB_TOKEN }}
+          source_registry_endpoint: https://docker.pkg.github.com/v2/
+
+          target_image_name: flownative/action-docker-build
+          target_registry_username: ${{ secrets.DOCKER_IO_REGISTRY_USER }}
+          target_registry_password: ${{ secrets.DOCKER_IO_REGISTRY_PASSWORD }}
+          target_registry_endpoint: https://index.docker.io/v1/
