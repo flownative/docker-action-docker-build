@@ -19,7 +19,7 @@ jobs:
           git_repository_url: https://github.com/${{ github.repository }}
           git_sha: ${{ github.sha }}
           image_name: flownative/docker-action-docker-build/action-docker-build
-          registry_password: ${{ secrets.GITHUB_BOT_TOKEN }}
+          registry_password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Determine latest released version
         id: latest_version
@@ -33,10 +33,10 @@ jobs:
 
           source_image_name: docker.pkg.github.com/flownative/docker-action-docker-build/action-docker-build
           source_registry_username: github
-          source_registry_password: ${{ secrets.GITHUB_BOT_TOKEN }}
+          source_registry_password: ${{ secrets.GITHUB_TOKEN }}
           source_registry_endpoint: https://docker.pkg.github.com/v2/
 
           target_image_name: docker.pkg.github.com/flownative/docker-action-docker-build/action-docker-build
           target_registry_username: github
-          target_registry_password: ${{ secrets.GITHUB_BOT_TOKEN }}
+          target_registry_password: ${{ secrets.GITHUB_TOKEN }}
           target_registry_endpoint: https://docker.pkg.github.com/v2/
