@@ -43,3 +43,7 @@ fi
 
 docker build "$@" .
 docker push "${IMAGE_NAME}:${IMAGE_TAG}"
+
+echo "::set-output name=image_name::${IMAGE_NAME}"
+echo "::set-output name=image_tag::${IMAGE_TAG}"
+echo "::set-output name=git_tag::${GIT_TAG}"
