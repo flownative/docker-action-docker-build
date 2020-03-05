@@ -1,9 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 # shellcheck disable=SC2001
 
 set -o errexit
-set -o nounset
-set -o pipefail
 
 GIT_TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags/||')
 IMAGE_NAME="docker.pkg.github.com/${INPUT_IMAGE_NAME}"
